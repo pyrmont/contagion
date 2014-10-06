@@ -12,6 +12,16 @@
 </head>
 <body>
 
+    <div id="message">
+    <% if @message == :infected %>
+        <p>Player has been infected and is now a zombie!</p>
+    <% elsif @message == :invalid %>
+        <p>That wasn't a valid ID. Try again.</p>
+    <% elsif @message == :already %>
+        <p>This player has already been infected!</p>
+    <% end %>
+    </div>
+
 	<form action="/submit" method="post">
         <label>Player ID:</label>
         <input type="text" id="player_id" name="player_id">

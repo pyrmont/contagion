@@ -8,8 +8,13 @@ database_file = 'database.sqlite'
 store = Sequel.sqlite database_file
 players = store[:players]
 
+# Enable sessions.
+enable :sessions
+
 # Set the index route.
 get '/' do
+    @message = session[:message]
+    session[:message] = ''
     erb :index
 end
 
@@ -17,25 +22,18 @@ end
 post '/submit' do
     player = players.where(:number => params[:player_id])
 
-    if player.count == 1
-        redirect to('/success')
+    if player.count == 1 && player.first[:status] == 'survivor'
+        player.update(:status => 'zombie')
+        session[:message] = :infected
+    elsif player.count == 1 && player.first[:status] == 'zombie'
+        session[:message] = :already
     elsif player.count == 0
-        redirect to('/failure')
+        session[:message] = :invalid
     else
         redirect to('/error')
     end
 
-    redirect to('/error') # It should be impossible to be here.
-end
-
-# Set the route for a successful update to the database.
-get '/success' do
-    'Success!'
-end
-
-# Set the route for a failed update to the database.
-get '/failure' do
-    'Failure!'
+    redirect to('/')
 end
 
 # Set the route for an error.
