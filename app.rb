@@ -25,7 +25,7 @@ post '/submit' do
         redirect to('/error')
     end
 
-    redirect to('/error') # It shouold be impossible to be here.
+    redirect to('/error') # It should be impossible to be here.
 end
 
 # Set the route for a successful update to the database.
