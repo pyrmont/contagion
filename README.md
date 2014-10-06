@@ -6,7 +6,7 @@ Contagion is a simple web app for tracking infections in [Zedtown](http://www.ze
 Installation
 ------------
 
-Contagion requires an SQLite database with a table called `players`. The table must include columns for `player_id`, `full_name` and `status`.
+Contagion requires an SQLite database with a table called `players`. The table must include columns for `number`, `full_name` and `status`.
 
 ```bash
 git clone git://github.com/pyrmont/contagion.git  # Warning: read-only.
