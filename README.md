@@ -17,7 +17,7 @@ bundle install
 bundle exec ruby app.rb # Kick it off in development mode
 ```
 
-Licence
--------
+Copyright
+---------
 
 Contagion is placed in the [public domain](http://creativecommons.org/publicdomain/zero/1.0/).
