@@ -1,9 +1,7 @@
 Contagion
 =========
 
-[Zedtown](http://www.zedtown.com/) is a giant game of zombie-themed tag. Players take up toy dart blasters and fight for their life against hordes of vicious zombies. Over the course of an afternoon, as survivors are hunted down and tagged by zombies they become zombies themselves, spreading the virus and dooming humanity.
-
-Contagion is a simple web app for tracking infections in Zedtown. A user can submit a player ID and, if the ID matches a player in the database, Contagion will mark that player as having been infected.
+Contagion is a simple web app for tracking infections in [Zedtown](http://www.zedtown.com/). A user can submit a player ID and, if the ID matches a player in the database, Contagion will mark that player as having been infected.
 
 Installation
 ------------
