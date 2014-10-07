@@ -3,6 +3,8 @@ require 'sequel'
 
 # Set the configuration options.
 database_file = 'database.sqlite'
+survivor_status = 'survivor'
+zombie_status = 'zombie'
 
 # Retrieve information from the database.
 store = Sequel.sqlite database_file
@@ -22,10 +24,10 @@ end
 post '/submit' do
     player = players.where(:number => params[:player_id])
 
-    if player.count == 1 && player.first[:status] == 'survivor'
-        player.update(:status => 'zombie')
+    if player.count == 1 && player.first[:status] == survivor_status
+        player.update(:status => zombie_status)
         session[:message] = :infected
-    elsif player.count == 1 && player.first[:status] == 'zombie'
+    elsif player.count == 1 && player.first[:status] == zombie_status
         session[:message] = :already
     elsif player.count == 0
         session[:message] = :invalid
@@ -43,6 +45,8 @@ end
 
 # Set the super secret route for a listing of all players.
 get '/list' do
+    @num_survivors = players.where(:status => survivor_status).count
+    @num_zombies = players.where(:status => zombie_status).count
     @players = players.all
     erb :list
 end
