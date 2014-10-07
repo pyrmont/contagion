@@ -29,3 +29,5 @@ data = CSV.read csv_file, headers: are_headers
 data.each do |row|
     players.insert :number => row[0], :name => row[1]
 end
+
+puts "Setup complete."
