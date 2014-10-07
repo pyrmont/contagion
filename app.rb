@@ -52,6 +52,7 @@ end
 
 # Set the route for login.
 get '/login' do
+    @redirect = params[:redirect]
     @message = session[:message]
     session[:message] = ''
     erb :login
@@ -62,17 +63,48 @@ post '/login' do
     keys = File.read('authentication').split(' ')
     if params[:password] == keys[0]
         session[:token] = keys[1]
-        redirect to('/list')
+        redirect to(params[:redirect])
     else
         session[:message] = :failed
-        redirect to('/login')
+        redirect to('/login?redirect=' + params[:redirect])
     end
+end
+
+# Set the route for reverting an infection.
+get '/revert' do
+    keys = File.read('authentication').split(' ')
+    redirect to('/login?redirect=/revert') unless session[:token] == keys[1]
+
+    @message = session[:message]
+    session[:message] = ''
+    erb :revert
+end
+
+# Set the route for processing an infection reversion.
+post '/revert' do
+    keys = File.read('authentication').split(' ')
+    redirect to('/login?redirect=/revert') unless session[:token] == keys[1]
+
+    player = players.where(:number => params[:player_id])
+
+    if player.count == 1 && player.first[:status] == zombie_status
+        player.update(:status => survivor_status)
+        session[:message] = :reverted
+    elsif player.count == 1 && player.first[:status] == survivor_status
+        session[:message] = :already
+    elsif player.count == 0
+        session[:message] = :invalid
+    else
+        redirect to('/error')
+    end
+
+    redirect to('/revert')
 end
 
 # Set the super secret route for a listing of all players.
 get '/list' do
     keys = File.read('authentication').split(' ')
-    redirect to('/login') unless session[:token] == keys[1]
+    redirect to('/login?redirect=/list') unless session[:token] == keys[1]
 
     @num_survivors = players.where(:status => survivor_status).count
     @num_zombies = players.where(:status => zombie_status).count
