@@ -12,20 +12,27 @@
 </head>
 <body>
 
+    <img src="images/logo.png">
+
     <div id="message">
     <% if @message == :infected %>
-        <p>Player has been infected and is now a zombie!</p>
+        <p class="success">Player has been infected and is now a zombie!</p>
     <% elsif @message == :invalid %>
-        <p>That wasn't a valid ID. Try again.</p>
+        <p class="error">That wasn't a valid ID. Try again.</p>
     <% elsif @message == :already %>
-        <p>This player has already been infected!</p>
+        <p class="error">This player has already been infected!</p>
     <% end %>
     </div>
 
-    <form action="/submit" method="post">
+    <div id="instructions">
+        <h2>Infection Report</h2>
+        <p>Enter the ID of the player who has been infected.
+    </div>
+
+    <form action="/submit" method="post" id="report">
         <label>Player ID:</label>
         <input type="text" id="player_id" name="player_id">
-        <input type="submit" value="Submit">
+        <input type="submit" value="Report">
     </form>
 
 </body>

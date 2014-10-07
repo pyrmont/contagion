@@ -12,12 +12,16 @@
 </head>
 <body>
 
+    <img src="images/logo.png">
+
     <div id="scoreboard">
         <div id="survivors">
-            <%= @num_survivors %>
+            <h2>Survivors</h2>
+            <h3><%= @num_survivors %></h3>
         </div>
         <div id="zombies">
-            <%= @num_zombies %>
+            <h2>Zombies</h2>
+            <h3><%= @num_zombies %></h3>
         </div>
     </div>
 
@@ -32,9 +36,9 @@
         <tbody>
             <% for @player in @players %>
             <tr>
-                <td><%= @player[:number] %></td>
-                <td><%= @player[:name] %></td>
-                <td><%= @player[:status] %></td>
+                <td class"number"><%= @player[:number] %></td>
+                <td class="name"><%= @player[:name] %></td>
+                <td class="status"><%= @player[:status] %></td>
             </tr>
             <% end %>
         </tbody>
