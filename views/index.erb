@@ -14,6 +14,17 @@
 
     <img src="images/logo.png">
 
+    <div id="scoreboard">
+        <div id="survivors">
+            <h2>Survivors</h2>
+            <h3><%= @num_survivors %></h3>
+        </div>
+        <div id="zombies">
+            <h2>Zombies</h2>
+            <h3><%= @num_zombies %></h3>
+        </div>
+    </div>
+
     <div id="message">
     <% if @message == :infected %>
         <p class="success">Player has been infected and is now a zombie!</p>

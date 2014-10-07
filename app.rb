@@ -15,6 +15,8 @@ enable :sessions
 
 # Set the index route.
 get '/' do
+    @num_survivors = players.where(:status => survivor_status).count
+    @num_zombies = players.where(:status => zombie_status).count
     @message = session[:message]
     session[:message] = ''
     erb :index
