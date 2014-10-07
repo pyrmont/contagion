@@ -2,14 +2,11 @@
 .bundle
 vendor/bundler
 
-# Generated files.
-built
-
 # Generated configs
 config/environment.rb
 
-# Files used in development
-development
+# Data files
+*.csv
 
 # The usual suspects
 Thumbs.db
