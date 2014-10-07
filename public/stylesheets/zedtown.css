@@ -16,9 +16,9 @@ body h2 { color: #88d493; margin: 2em 0 0 0; text-transform: uppercase; }
 
 body p { margin-top: 0; }
 
-body form#report { color: #ffffff; margin-top: 3em; }
-body form#report input[type=text] { color: #000000; }
-body form#report input[type=submit] { background: #88d493; border: 0 none; color: #000000; }
+body form { color: #ffffff; margin-top: 3em; }
+body form input[type=text] { color: #000000; }
+body form input[type=submit] { background: #88d493; border: 0 none; color: #000000; }
 
 body div#scoreboard { margin: 2em 0; }
 body div#scoreboard div#survivors { background: #88d493; color: #000000; display: inline-block; padding: 1em 0; width: 49%; }

@@ -8,6 +8,9 @@ config/environment.rb
 # Data files
 *.csv
 
+# Password
+authentication
+
 # The usual suspects
 Thumbs.db
 Desktop.ini

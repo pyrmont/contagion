@@ -6,6 +6,11 @@ database_file = 'database.sqlite'
 survivor_status = 'survivor'
 zombie_status = 'zombie'
 
+# Set options for Sinatra.
+configure do
+  set :static_cache_control, [:public, max_age: 60 * 60 * 24 * 365]
+end
+
 # Retrieve information from the database.
 store = Sequel.sqlite database_file
 players = store[:players]
@@ -45,8 +50,30 @@ get '/error' do
     'Not sure what went wrong there.'
 end
 
+# Set the route for login.
+get '/login' do
+    @message = session[:message]
+    session[:message] = ''
+    erb :login
+end
+
+# Set the route for processing a login request.
+post '/login' do
+    keys = File.read('authentication').split(' ')
+    if params[:password] == keys[0]
+        session[:token] = keys[1]
+        redirect to('/list')
+    else
+        session[:message] = :failed
+        redirect to('/login')
+    end
+end
+
 # Set the super secret route for a listing of all players.
 get '/list' do
+    keys = File.read('authentication').split(' ')
+    redirect to('/login') unless session[:token] == keys[1]
+
     @num_survivors = players.where(:status => survivor_status).count
     @num_zombies = players.where(:status => zombie_status).count
     @players = players.all
