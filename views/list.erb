@@ -35,7 +35,7 @@
         </thead>
         <tbody>
             <% for @player in @players %>
-            <tr>
+            <tr class="<%= @player[:status] %>">
                 <td class"number"><%= @player[:number] %></td>
                 <td class="name"><%= @player[:name] %></td>
                 <td class="status"><%= @player[:status] %></td>

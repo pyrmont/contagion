@@ -32,4 +32,5 @@ body table#list { text-align: left; width: 100%; }
 body table#list td { padding: 0.25em 1em; }
 body table#list thead tr { color: #ffffff; border-bottom: 1px solid #ffffff; }
 body table#list tbody tr:nth-child(odd) { background: #2b2b2b; }
-body table#list tbody td.status { text-transform: capitalize; }
+body table#list tbody tr.zombie { background: #a5463b; }
+body table#list tbody tr td.status { text-transform: capitalize; }
