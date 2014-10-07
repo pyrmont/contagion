@@ -36,4 +36,4 @@ Contagion uses a very simple and easily circumvented authentication system that 
 Copyright
 ---------
 
-Contagion is placed in the [public domain](http://creativecommons.org/publicdomain/zero/1.0/).
+Origional work is placed in the [public domain](http://creativecommons.org/publicdomain/zero/1.0/). Please note that images, fonts, stylesheets and other third party files that are included in this project remain the property of their respective owners. These works remain subject to copyright.
