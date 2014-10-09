@@ -13,7 +13,7 @@
 </head>
 <body>
 
-    <a href="/"><img src="images/logo.png"></a>
+    <a href="http://www.zedtown.com"><img src="images/logo.png"></a>
 
     <div id="scoreboard">
         <div id="survivors">
